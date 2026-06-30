@@ -1,3 +1,5 @@
+import datetime
+
 print('=== Расход топлива калькулятор ===');
 
 distance = float(input('Введите количество километров: '));
@@ -16,7 +18,11 @@ cena = float(input('Введите цену топлива за литр($): '))
 litry = (distance * rashod) /100;
 result = litry * cena;
 
-print('\n=== Результат ===')
+dateTime = datetime.datetime.now()
+
+print()
+print(dateTime.strftime("%x"))
+print(dateTime.strftime("%X"))
 print(f'Дистанция поездки: {distance:.2f}')
 print(f'Расход топлива: {rashod:.2f} (л/100)')
 print(f'Вид топлива: {toplivo}')
