@@ -1,4 +1,5 @@
 import os
+import sys
 import datetime
 
 def new_trip():
@@ -13,7 +14,7 @@ def new_trip():
     while rashod < 0:
         print('Ошибка!')
         rashod = float(input('Введите расход топлива еще раз(л/100): '))
-    
+        
     toplivo = input('Какое у вас топливо бензин или дизель?')
     cena = float(input('Введите цену топлива за литр($): '));
 
@@ -33,35 +34,46 @@ def new_trip():
     print(f"Стоимость поездки: {result:.2f} €")
 
     text = f"""
-    === Результат ===
-    Дата: {dateTime.strftime("%x")}
-    Время: {dateTime.strftime("%X")}
-    Дистанция поездки: {distance:.2f}
-    Расход топлива: {rashod:.2f}
-    Вид топлива: {toplivo}
-    Цена топлива: {cena:.2f} $
-    Будет израсходовано: {litry:.2f} л
-    Стоимость поездки: {result:.2f} €
-    ===========================
-    """
+        === Результат ===
+        Дата: {dateTime.strftime("%x")}
+        Время: {dateTime.strftime("%X")}
+        Дистанция поездки: {distance:.2f}
+        Расход топлива: {rashod:.2f}
+        Вид топлива: {toplivo}
+        Цена топлива: {cena:.2f} $
+        Будет израсходовано: {litry:.2f} л
+        Стоимость поездки: {result:.2f} €
+        ===========================
+        """
 
     f = open('historyTrip.txt', 'a', encoding='utf-8')
     f.write(text)
     f.close()
 
-print('======== Trip Cost ========')
-print('1. Новая поездка')
-print('2. История поездок')
-print('3. Выход')
+while True:
+    print('======== Trip Cost ========')
+    print('1. Новая поездка')
+    print('2. История поездок')
+    print('3. Выход')
 
-menu = input('Выберите пункт: ')
+    menu = input('Выберите пункт: ')
 
-if menu == '1':
-   new_trip()
+    if menu == '1':
+        new_trip()
+        print()
 
-elif menu == '2':
-    os.system('historyTrip.txt')
+    elif menu == '2':
+        os.system('historyTrip.txt')
+        print()
 
-else:
-    print('До новых встреч!!')
+    elif menu == '3':
+        print('До новых встреч!!')
+        sys.exit()
+        print()
+        break
+        
+    else:
+        print('Неверный пункт меню')
+        print()
+
 
